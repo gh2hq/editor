@@ -20,6 +20,6 @@ const handleChange = (newValue) => {
 
 
 <template>
-  <MonacoEditor :value="modelValue" language="python" theme="vs-dark" height="300px" :options="editorOptions"
+  <MonacoEditor :value="modelValue" language="python" theme="vs-dark" height="100%" :options="editorOptions"
     @change="handleChange" />
 </template>

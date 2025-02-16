@@ -10,9 +10,7 @@ export default defineConfig({
     nav: [
       {text: "Learn gh2", link: "https://gh2.dev/"},
     ],
-
     sidebar: [],
-
     socialLinks: [{icon: "github", link: "https://github.com/gh2hq/editor"}],
   },
 });
