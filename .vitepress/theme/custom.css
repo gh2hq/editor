@@ -11,3 +11,7 @@
 .xterm-viewport {
   overflow-y: auto !important;
 }
+
+.VPNav .container {
+  max-width: 100% !important;
+}
