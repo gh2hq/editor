@@ -19,12 +19,13 @@ for j in range(10):
 
 poem.print()`
 );
+
 </script>
 
 <template>
   <Splitter style="height: 300px">
     <SplitterPanel class="flex items-center justify-center">
-      <Editor :code="code" />
+      <Editor v-model="code" />
     </SplitterPanel>
     <SplitterPanel class="flex items-center justify-center">
       <Terminal :code="code" />
