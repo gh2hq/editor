@@ -23,7 +23,7 @@ poem.print()`
 </script>
 
 <template>
-  <Splitter style="height: 300px">
+  <Splitter style="height: var(--main-height)">
     <SplitterPanel class="flex items-center justify-center">
       <Editor v-model="code" />
     </SplitterPanel>

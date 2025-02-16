@@ -45,7 +45,15 @@ output
 }
 
 async function runPythonCode(code) {
-  if (!Terminal) Terminal = (await import("@xterm/xterm")).Terminal;
+  if (!Terminal) {
+    Terminal = (await import("@xterm/xterm")).Terminal;
+    const container = divRef.value;
+    const content = "Loading...";
+    term = new Terminal({ rows: 1, cols: content.length });
+    term.open(container);
+    term.write(content);
+    term.write("\x1B[?25l"); // Hide cursor
+  }
   if (!pyodide) pyodide = await loadPyodide();
 
   const redirectedCode = redirectPrint(code);
@@ -63,14 +71,8 @@ async function runPythonCode(code) {
   const rows = trimEnd.split("\r\n").length;
   const cols = Math.max(...trimEnd.split("\r\n").map(line => line.length));
 
-  if (!term) {
-    const container = divRef.value;
-    term = new Terminal({ cols, rows });
-    term.open(container);
-  } else {
-    term.reset();
-    term.resize(cols, rows);
-  }
+  term.reset();
+  term.resize(cols, rows);
   term.write(trimEnd);
   term.write("\x1B[?25l"); // Hide cursor
   return term;
@@ -104,6 +106,6 @@ onMounted(async () => {
   padding: 10px 20px;
   border-radius: 4px;
   background-color: black;
-  /* width: fit-content; */
+  width: fit-content;
 }
 </style>

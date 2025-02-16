@@ -1,3 +1,13 @@
+:root {
+  --p-splitter-background: var(--vp-c-bg) !important;
+  --p-splitter-border-color: var(--vp-c-bg) !important;
+  --p-splitter-gutter-background: var(--vp-c-divider) !important;
+}
+
+:root {
+  --main-height: calc(100vh - var(--vp-nav-height));
+}
+
 .xterm-viewport {
   overflow-y: auto !important;
 }
