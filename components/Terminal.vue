@@ -100,6 +100,8 @@ onMounted(async () => {
 <style scoped>
 .container {
   overflow: auto;
+  height: 100%;
+  width: 100%;
 }
 
 .terminal {
