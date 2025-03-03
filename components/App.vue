@@ -5,8 +5,7 @@ import Terminal from './Terminal.vue';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
 
-const code = ref(
-  `import gh2 as gh
+const defaultCode = `import gh2 as gh
 
 poem = gh.poem()
 
@@ -17,8 +16,18 @@ for j in range(10):
         if (i + j) % 2 == 1:
             poem.point(i, j, "0")
 
-poem.print()`
-);
+poem.print()`;
+
+const getCodeFromURL = () => {
+  const hash = window.location.hash;
+  if (hash.startsWith('#code=')) {
+    const encodedCode = hash.slice(6); // Remove '#code='
+    return decodeURIComponent(encodedCode);
+  }
+  return defaultCode;
+};
+
+const code = ref(getCodeFromURL());
 
 </script>
 
